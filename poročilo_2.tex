@@ -1,0 +1,100 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}  
+\usepackage{amsthm} 
+\begin{document}
+\thispagestyle{empty}
+{\large
+\noindent Univerza v Ljubljani\\[1mm]
+Fakulteta za matematiko in fiziko\\[5mm]}
+\vfill
+
+\begin{center}{\Large
+{\bf Predstavitev 4-ciklov v snarkih}\\[2mm]
+Eva Strašek in Vanja Kalaković\\[10mm]
+Mentorja: Janoš Vidali, Riste Škrekovski\\[2mm]
+Predmet: Finančna matematika \\[2mm]}
+\end{center}
+\vfill
+
+{\large
+Ljubljana, 2023}
+\pagebreak
+
+\section{Uvod}
+
+\noindent \textbf{Definicija:} Stopnja vozlišča $v$ v grafu G (oznaka je $deg_G(v)$)
+je enaka številu povezav grafa G, ki imajo vozlišče $v$ za svoje krajišče,
+pri čemer štejemo zanke dvakrat.\\
+
+\noindent \textbf{Definicija:} Če so vsa vozlišča grafa G enake stopnje
+k, pravimo, da je graf \textbf{k-regularen}; 3-regularnim grafom 
+pravimo tudi \textbf{kubični grafi}.\\
+
+\noindent \textbf{Definicija:} Graf je \textbf{povezan}, če za poljubni vozlišči obstaja
+pot med njima, sicer je graf \textbf{nepovezan}.\\
+
+\noindent \textbf{Definicija: Komponenta} grafa G je maksimalen povezan podgraf
+grafa G.\\
+
+\noindent \textbf{Definicija:} Vozlišče $v \in V(G)$ je \textbf{prerezano vozlišče}, če ima 
+podgraf G - $v$ več komponent kot graf G.\\
+
+\noindent \textbf{Definicija:} Povezavi, ki ima za krajišči prerezani vozlišči,
+pravimo \textbf{prerezana povezava} ali \textbf{most}.\\
+
+\noindent \textbf{Definicija: Kromatično število} grafa G (oznaka $\chi$(G)) je najmanjše število barv, ki jihpotrebujemo, da vozlišča grafa pobarvamo tako, da so vsa sosednja
+vozlišča pobarvana paroma različno.\\
+
+\noindent \textbf{Definicija: Kromatični indeks} grafa G je število $\chi'$(G), ki predstavlja najmanjše
+število barv, ki jih potrebujemo za barvanje povezav grafa G tako, da so sosednje povezave pobarvane paroma različno.\\
+
+\noindent \textbf{Vizingov izrek:} Za enostaven graf G z maksimalno stopnjo $\Delta$(G) velja
+$\Delta$(G) $\leq \chi$'(G) $\leq \Delta$(G) + 1. \\
+
+\noindent \textbf{Definicija:} Če so vsa vozlišča $v_0,v_1, \dots, v_k$ različna,
+govroimo o poti, v primeru, ko pa so vsa vozlišča različna, razen $v_0 = v_k$,
+imamo opravka z \textbf{obhodom}. Dolžini najkrajšega obhoda v grafu G pravimo
+\textbf{notranji obseg}.\\
+
+\noindent \textbf{Definicija:} Naj bo A množica prerezanih povezav moči 3 in G graf.\\
+ Če G - A predstavlja dve komponenti, ki vsebujeta cikel, pravimo da je A ciklični prerez.\\
+
+\noindent \textbf{Definicija: Ciklična povezavna povezanost} grafa G (zapis $\lambda_c$(G)) je velikost najmanjšega cikličnega prereza grafa G. Pravimo, da je G ciklično 
+k-povezavno povezan, če je $\lambda_c$(G) $\geq$ k. Ali drugače, grafu G moramo odstraniti najmanj k-povezav, da nam ta razpade na dve komponenti, ki vsebujeta cikel.\\
+
+\noindent \textbf{Definicija:} Snark je ciklično 4-povezavno povezan kubičen graf
+z notranjim obsegom vsaj 5 in kromatičnem indeksom 4. \\
+
+\newpage
+
+\section{Načrt dela}
+
+\noindent \subsection*{\large Naloga:} Želimo preveriti, ali (in kdaj) uvedba 4-ciklov v snark ohranja kromatični
+indeks(tj. kromatični indeks ostane 4). Uvedbo 4-cikla lahko izvedemo
+vsaj na dva načina:
+\begin{enumerate}
+    \item Vzemite dva robova ab in cd v G in ju dvakrat razdelite, tako da dobite
+    pot au1u2b iz roba ab in pot cv1v2d iz roba cd. Nato povežite u1 z v1
+    in u2 z v2.
+    \item Naj bo ab rob v G in a1, a2 druga dva soseda a, in naj bosta b1, b2
+    druga dva soseda b. Zdaj odstranimo vrhova a, b in povežemo a1 z b1
+    in a2 z b2.
+\end{enumerate}
+
+\noindent \subsection*{Načrt:} Najprej bova prenesli majše snarke iz House Of Graphs na katerih bova preverjali ohranjanje kromatičnega indeksa.
+Nato bova napisali program, ki bo na prenesenih snarkih uvedel 4-cikle na zgoraj opisana načina.\\
+Novo nastale snarke bova potem shranili in s programom izračunali nove kromatične indekse, kjer bova izločili tiste ki so različni od 4.\\
+Na ta način bova ugotovili ali uvedba 4-cikla v snark ohrani kromatični indeks in v katerih primerih to drži. Pri tem si bova pomagali z naslednjo lemo: \\
+
+\noindent \textbf{Lema:} Naj bo graf G' dobljen tako, da kubičnemu grafu G dodamo vozlišča $a_1,a_2$ in $a_3,a_4$ zaporedno na povezavi $e_1 = u_1v_1$ in $e_2 = u_2v_2$
+ter povezave $a_1a_4$ in $a_2a_3$. Če je $\chi'$(G') = 4, potem je $\chi'$(G) = 4.
+\end{document}
